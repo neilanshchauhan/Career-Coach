@@ -1,12 +1,13 @@
 from crewai import Agent
 from textwrap import dedent
+from tools import tool
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-llm = ChatGoogleGenerativeAI(model="",
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash",
                             verbose=True,
                             temperature=0.5,
                             google_api_key=os.getenv("GOOGLE_API_KEY"))
@@ -18,7 +19,7 @@ class CounsellingAgents():
         return Agent(
             role = "Skill Specialist/Analyzer",
             goal = "Perform detalied analysis on the strengths, weaknesses, skills and achievements of the user.",
-            tools = [],
+            tools = [tool],
             backstory = dedent("""\
                 As a Skill Specialist/Analyzer, your mission is to uncoer detailed information about the user's
                 strengths, weaknesses, skills and achievements. Your insights will lay the foundation for finding 
@@ -32,7 +33,7 @@ class CounsellingAgents():
         return Agent(
             role = "Skill Specialist/Analyzer",
             goal = "Perform detalied analysis on the strengths, weaknesses, skills and achievements of the user.",
-            tools = [],
+            tools = [tool],
             backstory = dedent("""\
                 As a Skill Specialist/Analyzer, your mission is to uncover detailed information about the user's
                 strengths, weaknesses, skills and achievements. Your insights will lay the foundation for finding 
@@ -46,7 +47,7 @@ class CounsellingAgents():
         return Agent(
             role = "Market Specialist",
             goal = "Based on the user's skillset, analyze the market trend and find out the domain and career opportunities which aligns with the user.",
-            tools = [],
+            tools = [tool],
             backstory = dedent("""\
                     As a Market Specialist, you excel at deciphering market trends and uncovering emerging career.
                     opportunities. With a keen understanding of individual skill sets and potential, you guide others 
