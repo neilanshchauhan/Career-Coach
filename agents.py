@@ -9,7 +9,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash",
                             verbose=True,
-                            temperature=0.5,
+                            temperature=0.7,
                             google_api_key=os.getenv("GOOGLE_API_KEY"))
 
 
@@ -25,23 +25,10 @@ class CounsellingAgents():
                 strengths, weaknesses, skills and achievements. Your insights will lay the foundation for finding 
                 suitable domain / career opportunities for the user based on the market trends"""),
             verbose = True,
-            allow_delegation = True # Helps agents interact with each other
+            allow_delegation = True, # Helps agents interact with each other
             llm = llm
         )
 
-    def skill_analyzer(self):
-        return Agent(
-            role = "Skill Specialist/Analyzer",
-            goal = "Perform detalied analysis on the strengths, weaknesses, skills and achievements of the user.",
-            tools = [tool],
-            backstory = dedent("""\
-                As a Skill Specialist/Analyzer, your mission is to uncover detailed information about the user's
-                strengths, weaknesses, skills and achievements. Your insights will lay the foundation for finding 
-                suitable domain / career opportunities for the user based on the market trends"""),
-            verbose = True,
-            allow_delegation = True # Helps agents interact with each other
-            llm = llm
-        )
 
     def market_analyzer(self):
         return Agent(
@@ -55,7 +42,7 @@ class CounsellingAgents():
                     acquire to enhance their expertise and stay ahead in their careers.
                     Use your market knowledge to help user identify their niche."""),
             verbose = True,
-            allow_delegation = True # Helps agents interact with each other
+            allow_delegation = True, # Helps agents interact with each other
             llm = llm
         )
 
@@ -73,6 +60,6 @@ class CounsellingAgents():
                     goal is to empower and motivate users, providing them with the confidence and direction needed to 
                     pursue their next career steps successfully."""),
             verbose = True,
-            allow_delegation = True # Helps agents interact with each other
+            allow_delegation = True, # Helps agents interact with each other
             llm = llm
         )
