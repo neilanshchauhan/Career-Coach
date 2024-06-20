@@ -1,7 +1,7 @@
 from crewai import Task
 from textwrap import dedent
 
-class Counselling():
+class CounsellingTasks():
     def skill_analysis_task(self, user_info):
         return Task(
             description = dedent(f"""\
