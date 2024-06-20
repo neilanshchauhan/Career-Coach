@@ -7,7 +7,7 @@ def main():
     load_dotenv()
 
     print("Welcome to Career Coach")
-    user_info = input("Tell me about your skills, strengths and weaknesses : ")
+    user_info = input("Tell me about your skills, strengths, doubts and queries related to your career : ")
 
     tasks = CounsellingTasks()
     agents = CounsellingAgents()
