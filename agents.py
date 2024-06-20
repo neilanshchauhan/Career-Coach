@@ -46,7 +46,7 @@ class CounsellingAgents():
             llm = llm
         )
 
-        def career_counsellor(self):
+    def career_counsellor(self):
         return Agent(
             role = "Career Counsellor",
             goal = dedent("""\

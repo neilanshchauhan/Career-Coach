@@ -2,7 +2,7 @@ from crewai import Task
 from textwrap import dedent
 
 class CounsellingTasks():
-    def skill_analysis_task(self, user_info):
+    def skill_analysis_task(self,agent,user_info):
         return Task(
             description = dedent(f"""\
                 Analyze the strengths, weaknesses, skills and achievements of the user.
@@ -16,7 +16,7 @@ class CounsellingTasks():
                 async_execution = False
         )
 
-    def domain_analysis_task(self, user_info):
+    def domain_analysis_task(self,agent,user_info):
         return Task(
             description = dedent(f"""\
                 Leveraging the user's strengths, skills, and achievements, recommend 
@@ -37,7 +37,7 @@ class CounsellingTasks():
                 async_execution = False
         )
 
-    def counselling_task(self, user_info):
+    def counselling_task(self,agent,user_info):
         return Task(
             description = dedent(f"""\
                 Compile the user's skill analysis, identified market/domain matches, and weaknesses

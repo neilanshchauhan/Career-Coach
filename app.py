@@ -7,7 +7,7 @@ def main():
     load_dotenv()
 
     print("Welcome to Career Coach")
-    user_info = input("Tell me about your skills, strengths and weaknesses")
+    user_info = input("Tell me about your skills, strengths and weaknesses : ")
 
     tasks = CounsellingTasks()
     agents = CounsellingAgents()
@@ -22,11 +22,10 @@ def main():
     domain_analysis_task = tasks.domain_analysis_task(market_analyzer, user_info)
     counselling_task = tasks.counselling_task(career_counsellor, user_info)
 
-    domain_analysis_task.context[skill_analysis_task]
-    counselling_task.context[skill_analysis_task,domain_analysis_task]
+    domain_analysis_task.context = [skill_analysis_task]
+    counselling_task.context = [skill_analysis_task,domain_analysis_task]
 
     # Create Crew
-
     crew = Crew(
         agents = [
             skill_analyzer,
@@ -41,7 +40,7 @@ def main():
         ]
     )
 
-    result = cre.kickoff()
+    result = crew.kickoff()
     print(result)
 
 if __name__ == "__main__":
